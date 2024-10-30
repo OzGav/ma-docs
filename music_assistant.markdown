@@ -3,8 +3,7 @@ title: Music Assistant
 description: Instructions on how to integrate Music Assistant into Home Assistant.
 ha_category:
   - Media player
-featured: true
-ha_release: 2024.11.0
+ha_release: 2024.11
 ha_iot_class: Local Push
 ha_config_flow: true
 ha_codeowners:
@@ -16,7 +15,7 @@ ha_zeroconf: true
 ha_integration_type: integration
 ---
 
-The Music Assistant (MA) integration allows you to connect Home Assistant to a [Music Assistant Server](https://music-assistant.io/). Once configured, all [MA Players](https://music-assistant.io/player-support/) show up as Home Assistant [media player entities](/integrations/media_player/).  Media players will allow you to control media playback and see the currently playing item.
+The **Music Assistant** (MA) {% term integrations %} allows you to connect Home Assistant to a [Music Assistant Server](https://music-assistant.io/). Once configured, all [MA Players](https://music-assistant.io/player-support/) show up as Home Assistant [media player entities](/integrations/media_player/).  Media players will allow you to control media playback and see the currently playing item.
 
 There is currently support for the following Home Assistant Platforms:
 
@@ -28,11 +27,11 @@ All of the Home Assistant [Media Player Control Actions](https://www.home-assist
 
 ### Manual configuration
 
-Under normal circumstances, Home Assistant will automatically discover your running Music Assistant Server. If there is something special about the HA or MA setup (e.g. the MA server is running as a remote docker container) or discovery is not working, it is possible to manually specify the URL to your Music Assistant server. 
+Under normal circumstances, Home Assistant will automatically discover your running Music Assistant Server. If there is something special about the HA or MA setup (e.g. the MA server is running as a remote Docker container) or discovery is not working, it is possible to manually specify the URL to your Music Assistant server.
 
 ## Media player
 
-The Music Assistant media player platform will create media player entities for all players available in MA including those imported from Home Assistant. This is needed to provide the full functionality Music Assistant has to offer. These entities will display media information, playback progress, and playback controls.
+The Music Assistant media player creates media player entities for all players available in MA including those imported from Home Assistant. This is needed to provide the full functionality Music Assistant has to offer. These entities will display media information, playback progress, and playback controls.
 
 ### Action `media_player.play_media`
 
@@ -41,10 +40,10 @@ Play media hosted on a Music Assistant server on a Music Assistant player. The a
 The `media_content_id` payload can be any of the following:
 
 - The name of a track, artist or album. (e.g. "Queen")
-- A track or album defined also with the artist name (e.g. "Queen - Innuendo")
+- A track or album combined with the artist name (e.g. "Queen - Innuendo")
 - A streaming provider URI (e.g. `spotify://artist/12345`)
 
-##### Examples:
+#### Examples:
 
 Play Adele's album 25
 
@@ -78,8 +77,8 @@ Play media on a Music Assistant player with more fine grained control options.
 
 | Data attribute | Required | Description                                                                                                              | Example                            |
 | -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
-| `media_id`     | Yes      | URI or name of the item you want to play. Specify a list if you want to play/enqueue multiple items.                     | "spotify://playlist/aabbccddeeff " |
-| `media_type`   | No       | The type of the content to play. Such as artist, album, track or playlist. Will be auto determined if omitted.           | "playlist "                        |
+| `media_id`     | Yes      | URI or name of the item you want to play. Specify a list if you want to play/enqueue multiple items.                     | "spotify://playlist/aabbccddeeff" |
+| `media_type`   | No       | The type of the content to play. Such as artist, album, track or playlist. Will be auto determined if omitted.           | "playlist"                        |
 | `artist`       | No       | When specifying a track or album by name in the Media ID field, you can optionally restrict results by this artist name. | "Queen"                            |
 | `album`        | No       | When specifying a track by name in the Media ID field, you can optionally restrict results by this album name.           | "News of the world"                |
 | `enqueue`      | No       | If the content should be played now or be added to the queue. Options are: play, replace, next. replace_next, add        | "replace"                          |
@@ -122,4 +121,4 @@ Transfer the player's queue to another player.
 
 ## Notes
 
-- Any HA players added to MA will appear duplicated as the MA version of the player is created. The original HA player can be hidden if desired.
+- Any Home Assistant players added to Music Assistant will appear duplicated as the MA version of the player is created. The original HA player can be hidden if desired.
