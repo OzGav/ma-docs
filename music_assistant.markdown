@@ -8,7 +8,7 @@ ha_release: 2024.11.0
 ha_iot_class: Local Push
 ha_config_flow: true
 ha_codeowners:
-  - '@marcelveldt'
+  - '@music_assistant'
 ha_domain: music_assistant
 ha_platforms:
   - media_player
@@ -18,7 +18,7 @@ ha_integration_type: integration
 
 The Music Assistant (MA) integration allows you to connect Home Assistant to a [Music Assistant Server](https://music-assistant.io/). Once configured, all [MA Players](https://music-assistant.io/player-support/) show up as Home Assistant [media player entities](/integrations/media_player/).  Media players will allow you to control media playback and see the currently playing item.
 
-There is currently support for the following device types within Home Assistant:
+There is currently support for the following Home Assistant Platforms:
 
 - [Media player](#media-player)
 
@@ -26,25 +26,13 @@ All of the Home Assistant [Media Player Control Actions](https://www.home-assist
 
 {% include integrations/config_flow.md %}
 
-During setup, if you are running MA in Docker, you will need the MA webserver and port (normally `YOUR_MA_IP_ADDRESS:8095`). If MA is running as an addon within HAOS then the server will be detected automatically.
+### Manual configuration
 
-### Integration options
-
-??????
-
-### Manual configuration ?????????????????????
-
-Alternatively, you can manually configure a Music Assistant server connection by selecting the "Configure Music Assistant server manually" when configuring a Music Assistant integration. This option is only available to users in "Advanced Mode". This will allow you to specify the server connection options which will be validated before setup is completed. The available options are described below:
-
-**Host**: The IP address or hostname of your Music Assistant server.
-
-## Update
-
-Notifications of new releases of Music Assistant Media Server are shown using an Update entity. Detailed release notes are provided.
+Under normal circumstances, Home Assistant will automatically discover your running Music Assistant Server. If there is something special about the HA or MA setup (e.g. the MA server is running as a remote docker container) or discovery is not working, it is possible to manually specify the URL to your Music Assistant server. 
 
 ## Media player
 
-The Music Assistant media player platform will create media player entities for all players available in MA including those imported from Home Assistant. This is needed to enable the announcement functionality. These entities will display media information, playback progress, and playback controls. Duplicated HA media player entities may be hidden.
+The Music Assistant media player platform will create media player entities for all players available in MA including those imported from Home Assistant. This is needed to provide the full functionality Music Assistant has to offer. These entities will display media information, playback progress, and playback controls.
 
 ### Action `media_player.play_media`
 
@@ -69,7 +57,7 @@ media_content_id: 'Adele - 25'
 Play all tracks from Stevie Wonder
 
 ```yaml
-entity_id: media_player.Music Assistant_player
+entity_id: media_player.music_assistant_player
 media_content_type: MUSIC
 media_content_id: 'Stevie Wonder'
 ```
@@ -134,4 +122,4 @@ Transfer the player's queue to another player.
 
 ## Notes
 
-- ??????????????????????????????????????????
+- Any HA players added to MA will appear duplicated as the MA version of the player is created. The original HA player can be hidden if desired.
